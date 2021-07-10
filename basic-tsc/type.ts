@@ -1,0 +1,19 @@
+// javascript code
+function jsFetchNum(id) {
+    // code ...
+    // code ...
+    // code ...
+    return new Promise((resolve, reject) => {
+        resolve(100);
+    });
+}
+
+// typescript code
+function tsFetchNum(id: number): Promise<number> {
+    // code ...
+    // code ...
+    // code ...
+    return new Promise((resolve, reject) => {
+        resolve(100);
+    });
+}
