@@ -26,7 +26,7 @@ function move(joystick: Joystick) {
             position.x ++;
             break;
         default:
-            throw Error('missing position ...');
+            throw Error(`I don't know this direction  ... : ${joystick}`);
     }
 }
 
