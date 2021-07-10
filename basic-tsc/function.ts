@@ -28,3 +28,14 @@ function addNumber(x:number, y:number = 1): void {
 addNumber(2, 5);
 addNumber(1);
 
+
+// Rest parameter
+// 여러 개의 파라미터를 배열의 형태로 받을 수 있는 방법이다.
+function addNumbers(...numbers: number[]): number {
+    return numbers.reduce((a,b) => a + b);
+}
+
+console.log(addNumbers(1));
+console.log(addNumbers(1, 3));
+console.log(addNumbers(1, 3, 5));
+console.log(addNumbers(1, 3, 5, 7));
