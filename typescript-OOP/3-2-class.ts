@@ -13,20 +13,23 @@
       this.coffeeBeans = coffeeBeans;
     }
 
-    makeCoffee(coffeeCup: CoffeeCup) {
-      if (coffeeCup.shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT > this.coffeeBeans) {
+    makeCoffee(shots: number): CoffeeCup {
+      if (shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT > this.coffeeBeans) {
         throw Error('not enough coffee beans !');
       } else {
-        console.log(`Making coffee with ${coffeeCup.shots} shots ...`);
-        if (coffeeCup.hasMilk) {
-          console.log(`add Milk ...`);
+        console.log(`Making coffee with ${shots} shots ...`);
+        this.coffeeBeans -= shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT;
+        return {
+          shots: shots,
+          hasMilk: false
         }
       }
     }
   }
 
   const coffeeMachine = new CoffeeMachine(20);
-  coffeeMachine.makeCoffee({shots:2, hasMilk:true});
+  coffeeMachine.makeCoffee(2);
+  console.log(coffeeMachine);
   
 }
 

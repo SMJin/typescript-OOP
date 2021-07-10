@@ -4,22 +4,25 @@
             this.coffeeBeans = 0;
             this.coffeeBeans = coffeeBeans;
         }
-        CoffeeMachine.prototype.makeCoffee = function (coffeeCup) {
-            if (coffeeCup.shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT > this.coffeeBeans) {
+        CoffeeMachine.prototype.makeCoffee = function (shots) {
+            if (shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT > this.coffeeBeans) {
                 throw Error('not enough coffee beans !');
             }
             else {
-                console.log("Making coffee with " + coffeeCup.shots + " shots ...");
-                if (coffeeCup.hasMilk) {
-                    console.log("add Milk ...");
-                }
+                console.log("Making coffee with " + shots + " shots ...");
+                this.coffeeBeans -= shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT;
+                return {
+                    shots: shots,
+                    hasMilk: false
+                };
             }
         };
         CoffeeMachine.BEANS_GRAMM_PER_SHOT = 7;
         return CoffeeMachine;
     }());
     var coffeeMachine = new CoffeeMachine_1(20);
-    coffeeMachine.makeCoffee({ shots: 2, hasMilk: true });
+    coffeeMachine.makeCoffee(2);
+    console.log(coffeeMachine);
 }
 // {
 //   type CoffeeCup = {
