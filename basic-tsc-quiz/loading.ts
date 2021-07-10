@@ -19,19 +19,19 @@
   };
 
   type ResourceLoadState = LoadingState | SuccessState | FailState;
-  function printLoginState(correntState: ResourceLoadState) {
-    switch(correntState.state) {
+  function printLoginState(currentState: ResourceLoadState) {
+    switch(currentState.state) {
       case 'loading':
         console.log(`👀 loading...`);
         break;
         case 'success':
-          console.log(`😃 loaded`);
+          console.log(`😃 ${currentState.response.body}`);
           break;
         case 'fail':
-          console.log(`😱 no network`);
+          console.log(`😱 ${currentState.reason}`);
           break;
         default:
-          throw Error('404: unknown Error !');
+          throw Error(`unknown state ... : ${currentState}`);
     }
   }
 
